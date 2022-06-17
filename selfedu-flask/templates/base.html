@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block title -%}
+    {% if title -%}
+    <title>have title - {{ title }}</title>
+    {% else %}
+    <title>not title</title>
+    {% endif -%}
+    {% endblock title -%}
+</head>
+<body>
+    {% block content -%}
+        {% block mainmenu -%}
+    <ul>
+        {% for m in menu -%}
+        <li>{{m}}</li>
+        {% endfor -%}
+    </ul>
+        {% endblock mainmenu -%}
+    {% endblock content -%}
+</body>
+</html>
