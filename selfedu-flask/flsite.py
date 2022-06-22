@@ -2,19 +2,22 @@ from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 
-menu = ['First', 'Second', 'Three']
-user = ['Alpha', 'Beta', 'Gamma']
+menuu = [{'name': 'First', 'url': 'prost-perv'},
+        {'name': 'Second', 'url': 'number 2'},
+        {'name': 'Three', 'url': '333'}]
+
+userr = ['Alpha', 'Beta', 'Gamma']
 
 @app.route('/')
 def index():
     print(url_for('index'))
-    return render_template('index.html', title='Все Фласк', menu=menu)
+    return render_template('index.html', title='Все Фласк', menu=menuu)
 
 
 @app.route('/about')
 def about():
     print(url_for('about'))
-    return render_template('about.html', title='Про нас', menu=user)
+    return render_template('about.html', title='Про нас', menu=userr)
 
 
 @app.route('/profile/<username>') #<path:username>asd/123)
