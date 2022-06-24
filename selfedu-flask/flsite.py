@@ -1,24 +1,34 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 
 app = Flask(__name__)
 
-menuu = [{'name': 'First', 'url': 'prost-perv'},
+numb = [{'name': 'First', 'url': 'prost-perv'},
         {'name': 'Second', 'url': 'number 2'},
         {'name': 'Three', 'url': '333'}]
 
-userr = ['Alpha', 'Beta', 'Gamma']
+user = [{'name': 'Alpha', 'url': 'Alpha1'},
+        {'name': 'Beta', 'url': 'Beta_2'},
+        {'name': 'Gamma', 'url': '33 3'}]
+
 
 @app.route('/')
 def index():
     print(url_for('index'))
-    return render_template('index.html', title='Все Фласк', menu=menuu)
+    return render_template('index.html', title='Все Фласк', menu=numb)
 
 
 @app.route('/about')
 def about():
     print(url_for('about'))
-    return render_template('about.html', title='Про нас', menu=userr)
+    return render_template('about.html', title='Про нас', menu=user)
 
+
+@app.route('/contact', methods=['POST', 'GET'])
+def contact():
+    print(url_for('contact'))
+    if request.method == 'POST':
+        print(request.form['username'])
+    return render_template('contact.html', title='Контакты', menu=numb)
 
 @app.route('/profile/<username>') #<path:username>asd/123)
 def profile(username):
